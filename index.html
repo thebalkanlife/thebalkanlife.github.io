@@ -115,6 +115,22 @@ a { color: inherit; }
 .logo + .eyebrow { padding-top: 18px; }
 .foot-brand { display: flex; align-items: center; gap: 14px; }
 .foot-logo { height: 30px; width: auto; display: block; }
+
+.carousel { outline: none; }
+.slides { position: relative; width: 100%; padding-bottom: 33.75%; overflow: hidden; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.slide { position: absolute; top: 0; left: 50%; width: 60%; margin: 0; transform: translateX(-50%); transition: transform .5s cubic-bezier(.3,.7,.2,1), opacity .5s ease; border: 1px solid rgba(196,154,85,.35); box-shadow: 0 24px 50px -24px rgba(0,0,0,.85); background: var(--surface); cursor: pointer; will-change: transform; }
+.slide img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; }
+.car-ui { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 26px; }
+.car-btn { width: 52px; height: 52px; border: 1px solid var(--gold); background: transparent; color: var(--gold-light); font-size: 22px; line-height: 1; cursor: pointer; flex: none; font-family: var(--body); }
+.car-btn:hover { background: rgba(196,154,85,.14); }
+.car-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+.car-cap { text-align: center; min-width: min(300px, 50vw); }
+.car-flag { display: block; width: 36px; height: 27px; object-fit: cover; margin: 0 auto 10px; border: 1px solid rgba(196,154,85,.4); }
+.car-name { font-family: var(--display); color: var(--fg-strong); font-size: 18px; letter-spacing: .08em; text-transform: uppercase; }
+.car-place { color: var(--gold-light); font-size: 18px; margin-top: 2px; }
+.car-count { color: var(--muted); font-size: 15px; margin-top: 4px; letter-spacing: .1em; }
+@media (max-width: 760px) { .slides { padding-bottom: 43.9%; } .slide { width: 78%; } .car-ui { gap: 12px; } .car-btn { width: 46px; height: 46px; } .car-name { font-size: 15px; } .car-place { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
 .legal { display: flex; flex-wrap: wrap; gap: 6px 22px; }
 .legal a { color: var(--muted); text-decoration: none; }
 .legal a:hover { color: var(--gold-light); }
@@ -264,6 +280,33 @@ dialog::backdrop { background: rgba(10,7,4,.72); -webkit-backdrop-filter: blur(5
     </div>
   </div>
 
+  <section id="conversations" aria-labelledby="conv-title">
+    <div class="section-head">
+      <p class="eyebrow plain">Real conversations</p>
+      <h2 id="conv-title">Recent interviews.</h2>
+      <p>Expats across Croatia, Montenegro, Albania and Serbia, in their own words. The footage is blurred here. The full conversations are inside the community.</p>
+    </div>
+    <div class="carousel" id="carousel" role="region" aria-roledescription="carousel" aria-label="Recent interviews" tabindex="0">
+      <div class="slides">
+        <figure class="slide" data-name="Simone" data-place="Split, Croatia" data-flag="assets/flags/hr.svg"><img src="assets/interviews/simone.webp" width="960" height="540" alt="Blurred still from the interview with Simone, Split, Croatia" loading="eager"></figure>
+        <figure class="slide" data-name="Carl" data-place="Zadar, Croatia" data-flag="assets/flags/hr.svg"><img src="assets/interviews/carl.webp" width="960" height="540" alt="Blurred still from the interview with Carl, Zadar, Croatia" loading="lazy"></figure>
+        <figure class="slide" data-name="Sarah and Clint" data-place="Croatian countryside" data-flag="assets/flags/hr.svg"><img src="assets/interviews/sarah-and-clint.webp" width="960" height="540" alt="Blurred still from the interview with Sarah and Clint, Croatian countryside" loading="lazy"></figure>
+        <figure class="slide" data-name="Zoe" data-place="Herceg Novi, Montenegro" data-flag="assets/flags/me.svg"><img src="assets/interviews/zoe.webp" width="960" height="540" alt="Blurred still from the interview with Zoe, Herceg Novi, Montenegro" loading="lazy"></figure>
+        <figure class="slide" data-name="Sean" data-place="Herceg Novi, Montenegro" data-flag="assets/flags/me.svg"><img src="assets/interviews/sean.webp" width="960" height="540" alt="Blurred still from the interview with Sean, Herceg Novi, Montenegro" loading="lazy"></figure>
+        <figure class="slide" data-name="Anthony" data-place="Sutomore, Montenegro" data-flag="assets/flags/me.svg"><img src="assets/interviews/anthony.webp" width="960" height="540" alt="Blurred still from the interview with Anthony, Sutomore, Montenegro" loading="lazy"></figure>
+        <figure class="slide" data-name="Courtney" data-place="Durrës, Albania" data-flag="assets/flags/al.svg"><img src="assets/interviews/courtney.webp" width="960" height="540" alt="Blurred still from the interview with Courtney, Durrës, Albania" loading="lazy"></figure>
+        <figure class="slide" data-name="James" data-place="Pogradec, Albania" data-flag="assets/flags/al.svg"><img src="assets/interviews/james-pogradec.webp" width="960" height="540" alt="Blurred still from the interview with James, Pogradec, Albania" loading="lazy"></figure>
+        <figure class="slide" data-name="Olivier" data-place="Tara Mountain, Serbia" data-flag="assets/flags/rs.svg"><img src="assets/interviews/olivier.webp" width="960" height="540" alt="Blurred still from the interview with Olivier, Tara Mountain, Serbia" loading="lazy"></figure>
+        <figure class="slide" data-name="James" data-place="Novi Sad, Serbia" data-flag="assets/flags/rs.svg"><img src="assets/interviews/james-novi-sad.webp" width="960" height="540" alt="Blurred still from the interview with James, Novi Sad, Serbia" loading="lazy"></figure>
+      </div>
+      <div class="car-ui">
+        <button class="car-btn" type="button" data-dir="-1" aria-label="Previous interview">&larr;</button>
+        <div class="car-cap" aria-live="polite"><img class="car-flag" src="assets/flags/hr.svg" width="36" height="27" alt=""><div class="car-name"></div><div class="car-place"></div><div class="car-count"></div></div>
+        <button class="car-btn" type="button" data-dir="1" aria-label="Next interview">&rarr;</button>
+      </div>
+    </div>
+  </section>
+
   <section>
     <div class="section-head">
       <p class="eyebrow plain">Inside the community</p>
@@ -397,6 +440,43 @@ dialog::backdrop { background: rgba(10,7,4,.72); -webkit-backdrop-filter: blur(5
     vsl.addEventListener("click", play);
     vsl.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); play(); } });
   }
+
+
+  // Interview carousel: one step per click, loops around.
+  (function () {
+    var root = document.getElementById("carousel");
+    var slides = Array.prototype.slice.call(root.querySelectorAll(".slide"));
+    var n = slides.length, cur = 0;
+    var nameEl = root.querySelector(".car-name"), placeEl = root.querySelector(".car-place"), countEl = root.querySelector(".car-count"), flagEl = root.querySelector(".car-flag");
+    function offset(i) { var o = (i - cur) % n; if (o > n / 2) o -= n; if (o < -n / 2) o += n; return o; }
+    function render() {
+      slides.forEach(function (el, i) {
+        var o = offset(i), a = Math.abs(o);
+        var show = a <= 2;
+        var x = o === 0 ? 0 : Math.sign(o) * (a === 1 ? 64 : 92);
+        var sc = a === 0 ? 1 : (a === 1 ? 0.74 : 0.56);
+        el.style.transform = "translateX(calc(-50% + " + x + "%)) scale(" + sc + ")";
+        el.style.opacity = show ? (a === 0 ? 1 : (a === 1 ? 0.55 : 0.25)) : 0;
+        el.style.zIndex = 10 - a;
+        el.style.pointerEvents = show ? "auto" : "none";
+        el.setAttribute("aria-hidden", a === 0 ? "false" : "true");
+      });
+      nameEl.textContent = slides[cur].dataset.name;
+      placeEl.textContent = slides[cur].dataset.place;
+      flagEl.src = slides[cur].dataset.flag;
+      countEl.textContent = (cur + 1) + " / " + n;
+    }
+    function go(d) { cur = (cur + d + n) % n; render(); }
+    root.querySelectorAll(".car-btn").forEach(function (b) { b.addEventListener("click", function () { go(parseInt(b.dataset.dir, 10)); }); });
+    slides.forEach(function (el, i) { el.addEventListener("click", function () { var o = offset(i); if (o !== 0) go(o > 0 ? o : o); }); });
+    root.addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); } if (e.key === "ArrowRight") { e.preventDefault(); go(1); } });
+    var sx = null;
+    var stage = root.querySelector(".slides");
+    stage.addEventListener("pointerdown", function (e) { sx = e.clientX; });
+    stage.addEventListener("pointerup", function (e) { if (sx === null) return; var dx = e.clientX - sx; sx = null; if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1); });
+    stage.addEventListener("pointercancel", function () { sx = null; });
+    render();
+  })();
 
   // Dialogs
   var opened = {};
